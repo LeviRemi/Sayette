@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sayette - Live</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="teleprompter-body">
+  <div class="teleprompter-container">
+    <div class="teleprompter-header">
+      <a href="/" class="back-link">&larr; Back to Script</a>
+      <div class="controls">
+        <button id="start-btn" class="btn btn-primary">Start Listening</button>
+        <button id="stop-btn" class="btn btn-secondary" disabled>Stop</button>
+        <button id="reset-btn" class="btn btn-secondary">Reset Position</button>
+      </div>
+      <div class="timer" id="timer">00:00</div>
+      <div class="status">
+        <span id="status-indicator" class="status-dot offline"></span>
+        <span id="status-text">Ready</span>
+      </div>
+    </div>
+
+    <div class="sticky-heading" id="sticky-heading"></div>
+
+    <div class="teleprompter-display" id="teleprompter-display">
+      <div class="segments-container" id="segments-container">
+        <!-- Segments will be populated by JS -->
+      </div>
+    </div>
+
+    <div class="speech-debug" id="speech-debug">
+      <div class="debug-label">Hearing:</div>
+      <div class="debug-text" id="debug-text">—</div>
+    </div>
+  </div>
+
+  <script src="fuzzy-match.js"></script>
+  <script src="teleprompter.js"></script>
+</body>
+</html>

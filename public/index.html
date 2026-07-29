@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sayette</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Sayette</h1>
+      <p class="subtitle">Paste or type your script below, then launch the teleprompter. It will listen to you speak and automatically track your position.</p>
+    </header>
+
+    <div class="input-section">
+      <div class="toolbar">
+        <label for="script-input">Your Script</label>
+        <span class="hint">Supports markdown formatting. Each paragraph/line becomes a teleprompter segment.</span>
+      </div>
+      <textarea 
+        id="script-input" 
+        placeholder="Paste your script here...
+
+You can use markdown formatting:
+- **bold** for emphasis
+- Separate paragraphs with blank lines
+- Each line becomes a segment in the teleprompter
+- Lines starting with # are decorative headings (not spoken)
+
+The teleprompter will track your speech even if you don't read it word-for-word."
+        spellcheck="true"
+      ></textarea>
+
+      <div class="actions">
+        <button id="load-sample" class="btn btn-secondary">Load Sample Script</button>
+        <button id="launch-btn" class="btn btn-primary">Launch Teleprompter</button>
+      </div>
+
+      <div class="info-box">
+        <h3>How it works</h3>
+        <ul>
+          <li>Enter your script above and click "Launch Teleprompter"</li>
+          <li>Allow microphone access when prompted</li>
+          <li>Start speaking naturally — the teleprompter tracks your position</li>
+          <li>You don't need to read verbatim; it uses fuzzy matching to follow along</li>
+          <li>Works best in <strong>Chrome</strong> or <strong>Edge</strong> (Web Speech API)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sampleScript = `Good morning everyone, and thank you for being here today.
+
+I want to talk about something that affects all of us — the way we communicate in a digital world.
+
+Over the past decade, we've seen a dramatic shift in how people share ideas. Social media, video calls, and instant messaging have replaced many face-to-face conversations.
+
+But here's the thing: the fundamentals of good communication haven't changed. Whether you're speaking to one person or a thousand, clarity and authenticity still matter most.
+
+Let me share three principles that have guided my approach:
+
+First, know your audience. Before you say a single word, understand who you're speaking to and what they care about.
+
+Second, be concise. Respect people's time. Say what you need to say, and say it well.
+
+Third, be genuine. People can tell when you're being authentic, and they respond to it.
+
+These principles work whether you're giving a keynote, leading a meeting, or having a one-on-one conversation.
+
+Thank you for your time today. I hope these ideas are useful to you.`;
+
+    document.getElementById('load-sample').addEventListener('click', () => {
+      document.getElementById('script-input').value = sampleScript;
+    });
+
+    document.getElementById('launch-btn').addEventListener('click', () => {
+      const script = document.getElementById('script-input').value.trim();
+      if (!script) {
+        alert('Please enter a script before launching the teleprompter.');
+        return;
+      }
+      // Store script in sessionStorage and navigate to teleprompter
+      sessionStorage.setItem('teleprompter-script', script);
+      window.location.href = '/teleprompter';
+    });
+  </script>
+</body>
+</html>

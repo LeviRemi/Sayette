@@ -1,0 +1,14 @@
+{
+  "name": "sayette",
+  "version": "1.0.0",
+  "description": "Sayette - an intelligent teleprompter that listens to your speech and tracks your position in a script",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "4.21.2",
+    "marked": "15.0.4"
+  }
+}
